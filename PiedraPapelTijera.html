@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Piedra, papel o tijera</title>
+        <script>
+            //Genera un número aleatorio entre un rango de números (minimo y máximo)
+            function aleatorio(min, max) {
+                return Math.floor(Math.random()*(max-min+1)+min)
+            }
+
+            function iniciaJuego() {
+                let mensageJugador, mensagePc
+                jugador = prompt("Elige: 1 para piedra, 2 para papel, 3 para tijera")
+                pc = aleatorio(numMin, numMax)
+                mensageJugador = "Elegiste " + mensageEleccion(jugador)
+                mensagePc = "El PC Eligió " + mensageEleccion(pc)
+                alert(mensageJugador)
+                alert(mensagePc)
+                alert(combate(jugador, pc))
+            }
+
+            function mensageEleccion(jugador) {
+                let eleccion
+                if (jugador == 1) {
+                    eleccion = "Piedra ✊"
+                } else if(jugador == 2) {
+                    eleccion ="Papel ✋"
+                } else if(jugador == 3){
+                    eleccion = "Tijera ✌"
+                } else {
+                    eleccion = "📢❌❌"
+                }
+                return eleccion
+            } 
+
+            function combate(jugador1, jugador2) {
+                let resultadoJuego
+                if (jugador1 == jugador2) {
+                    resultadoJuego = "Empate ⏭"
+                } else if ((jugador1 == 1 && jugador2 == 3) || (jugador1 == 2 && jugador2 == 1) || (jugador1 == 3 && jugador2 == 2)) {
+                    resultadoJuego = "Ganaste 🎇"
+                } else {
+                    resultadoJuego = "Perdiste ⚰💀"
+                }
+                return resultadoJuego
+            }
+
+            // 1 es piedra, 2 es pale, 3 es tijera
+            let numMin = 1
+            let numMax = 3
+            
+            let jugador = 0
+            let pc = 0
+
+            iniciaJuego()
+        </script>
+    </head>
+    <body>
+        <h1>Piedra, papel o tijera</h1>
+        
+    </body>
+</html>
