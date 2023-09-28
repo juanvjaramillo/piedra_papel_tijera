@@ -9,15 +9,16 @@
                 return Math.floor(Math.random()*(max-min+1)+min)
             }
 
-            function iniciaJuego() {
-                let mensageJugador, mensagePc
-                jugador = prompt("Elige: 1 para piedra, 2 para papel, 3 para tijera")
-                pc = aleatorio(numMin, numMax)
-                mensageJugador = "Elegiste " + mensageEleccion(jugador)
-                mensagePc = "El PC Eligió " + mensageEleccion(pc)
-                alert(mensageJugador)
-                alert(mensagePc)
-                alert(combate(jugador, pc))
+            function combate(jugador1, jugador2) {
+                let resultadoJuego
+                if (jugador1 == jugador2) {
+                    resultadoJuego = "Empate ⏭"
+                } else if ((jugador1 == 1 && jugador2 == 3) || (jugador1 == 2 && jugador2 == 1) || (jugador1 == 3 && jugador2 == 2)) {
+                    resultadoJuego = "Ganaste 🎇"
+                } else {
+                    resultadoJuego = "Perdiste ⚰💀"
+                }
+                return resultadoJuego
             }
 
             function mensageEleccion(jugador) {
@@ -34,17 +35,17 @@
                 return eleccion
             } 
 
-            function combate(jugador1, jugador2) {
-                let resultadoJuego
-                if (jugador1 == jugador2) {
-                    resultadoJuego = "Empate ⏭"
-                } else if ((jugador1 == 1 && jugador2 == 3) || (jugador1 == 2 && jugador2 == 1) || (jugador1 == 3 && jugador2 == 2)) {
-                    resultadoJuego = "Ganaste 🎇"
-                } else {
-                    resultadoJuego = "Perdiste ⚰💀"
-                }
-                return resultadoJuego
+            function iniciaJuego(jugador1, jugador2) {
+                let mensageJugador, mensagePc
+                jugador1 = prompt("Elige: 1 para piedra, 2 para papel, 3 para tijera")
+                jugador2 = aleatorio(numMin, numMax)
+                mensageJugador = "Elegiste " + mensageEleccion(jugador1)
+                mensagePc = "El PC Eligió " + mensageEleccion(jugador2)
+                alert(mensageJugador)
+                alert(mensagePc)
+                alert(combate(jugador1, jugador2))
             }
+
 
             // 1 es piedra, 2 es pale, 3 es tijera
             let numMin = 1
@@ -53,7 +54,7 @@
             let jugador = 0
             let pc = 0
 
-            iniciaJuego()
+            iniciaJuego(jugador, pc)
         </script>
     </head>
     <body>
